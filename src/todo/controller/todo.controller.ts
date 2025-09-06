@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { GetTodosPort } from '../domain/port/get-todos.port';
 import { Todo } from '../domain/model/todo.model';
 
@@ -6,6 +6,7 @@ import { Todo } from '../domain/model/todo.model';
 export class TodoController {
   constructor(private readonly getTodosPort: GetTodosPort) {}
 
+  @Get()
   async getTodos(): Promise<Todo[]> {
     return this.getTodosPort.execute();
   }
